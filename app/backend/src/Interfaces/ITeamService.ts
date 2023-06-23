@@ -1,4 +1,4 @@
-import Iteams from './Iteams';
+import Iteams from './ITeams';
 import { ServiceResponse } from '../database/types/ServiceResponse';
 
 export default interface IteamService {

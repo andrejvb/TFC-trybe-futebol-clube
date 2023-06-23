@@ -6,7 +6,7 @@ import {
   CreationOptional,
 } from 'sequelize';
 import db from '.';
-import Iteams from '../../Interfaces/Iteams';
+import Iteams from '../../Interfaces/ITeams';
 
 class SequelizeTeam extends Model<InferAttributes<SequelizeTeam>,
 InferCreationAttributes<SequelizeTeam>> implements Iteams {

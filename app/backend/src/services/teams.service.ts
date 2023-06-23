@@ -1,7 +1,7 @@
 import TeamsModel from '../models/teams.model';
-import IteamService from '../Interfaces/IteamService';
+import IteamService from '../Interfaces/ITeamService';
 import { ServiceResponse } from '../database/types/ServiceResponse';
-import Iteams from '../Interfaces/Iteams';
+import Iteams from '../Interfaces/ITeams';
 
 class TeamsService implements IteamService {
   // private model: IteamModel

@@ -49,7 +49,7 @@ SequelizeMatch.init({
   sequelize: db,
   modelName: 'matches',
   timestamps: false,
-  underscored: true,
+  // underscored: true,
 });
 
 SequelizeMatch.belongsTo(SequelizeTeam, { foreignKey: 'homeTeamId' as 'homeTeam' });

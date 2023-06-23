@@ -1,9 +1,9 @@
 import * as bcrypt from 'bcryptjs';
-import IuserService from '../Interfaces/IuserService';
+import IuserService from '../Interfaces/IUserService';
 import UsersModel from '../models/users.model';
 import { Token } from '../database/types/Token';
 import { ServiceMessage, ServiceResponse } from '../database/types/ServiceResponse';
-import Iuser, { IuserLogin } from '../Interfaces/Iuser';
+import Iuser, { IuserLogin } from '../Interfaces/IUser';
 import JWT from '../utils/JWT';
 
 class UsersService implements IuserService {

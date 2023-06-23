@@ -1,5 +1,5 @@
-import IteamModel from '../Interfaces/IteamModel';
-import Iteams from '../Interfaces/Iteams';
+import IteamModel from '../Interfaces/ITeamModel';
+import Iteams from '../Interfaces/ITeams';
 import SequelizeTeam from '../database/models/SequelizeTeam';
 
 class TeamsModel implements IteamModel {
