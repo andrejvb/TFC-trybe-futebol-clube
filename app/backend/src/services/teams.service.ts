@@ -1,6 +1,6 @@
 import TeamsModel from '../models/teams.model';
 import IteamService from '../Interfaces/IteamService';
-import { ServiceResponse } from '../Interfaces/ServiceResponse';
+import { ServiceResponse } from '../database/types/ServiceResponse';
 import Iteams from '../Interfaces/Iteams';
 
 class TeamsService implements IteamService {

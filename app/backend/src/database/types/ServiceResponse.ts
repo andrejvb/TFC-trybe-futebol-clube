@@ -10,4 +10,6 @@ export type ServiceResponseSuccess<T> = {
   data: T
 };
 
+export type ServiceMessage = { message: string };
+
 export type ServiceResponse<T> = ServiceResponseSuccess<T> | ServiceResponseError;
