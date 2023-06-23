@@ -1,6 +1,6 @@
 export default interface Iuser {
   id: number;
-  userName: string;
+  username: string;
   role: string;
   email: string;
   password: string;

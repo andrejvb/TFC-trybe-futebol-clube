@@ -8,8 +8,8 @@ class UsersModel implements IuserModel {
   findByEmail = async (email: Iuser['email']): Promise<Iuser | null> => {
     const user = await this.model.findOne({ where: { email } });
     if (!user) return null;
-    const { id, userName, role, password } = user;
-    return { id, userName, role, email, password };
+    const { id, username, role, password } = user;
+    return { id, username, role, email, password };
   };
 }
 
