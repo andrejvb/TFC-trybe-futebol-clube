@@ -1,5 +1,6 @@
-import IMatchs from './IMatches';
+import IMatches from './IMatches';
 
 export default interface IMatchModel {
-  findAll(): Promise<IMatchs[]>;
+  findAll(): Promise<[] | IMatches[]>;
+  findMatchInProgress(boll: boolean): Promise<IMatches[]>
 }
