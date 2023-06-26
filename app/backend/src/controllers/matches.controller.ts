@@ -7,11 +7,13 @@ class MatchesController {
 
   public findAllMatches = async (req: Request, res: Response) => {
     const { inProgress } = req.query;
-    if (inProgress) {
-      return res.status(200)
-        .json(((await this.matchesService
-          .findMatchStatus(inProgress === 'true'))
-          .data));
+    if (inProgress === 'true') {
+      const inProgressMatch = await this.matchesService.findMatchStatus(true);
+      return res.status(200).json(inProgressMatch.data);
+    }
+    if (inProgress === 'false') {
+      const inProgressMatch = await this.matchesService.findMatchStatus(false);
+      return res.status(200).json(inProgressMatch.data);
     }
     const { data } = await this.matchesService.findAllMatches();
     return res.status(200).json(data);

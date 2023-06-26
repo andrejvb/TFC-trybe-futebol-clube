@@ -12,8 +12,8 @@ class MatchesService {
     return { status: 'SUCCESSFUL', data: allMatches };
   };
 
-  public findMatchStatus = (boll: boolean) => {
-    const matches = this.matchModel.findMatchInProgress(boll);
+  public findMatchStatus = async (inProgress: boolean) => {
+    const matches = await this.matchModel.findMatchInProgress(inProgress);
     return { status: 'SUCCESSFUL', data: matches };
   };
 }
