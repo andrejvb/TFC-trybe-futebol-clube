@@ -14,7 +14,6 @@ const { app } = new App();
 
 const { expect } = chai;
 
-let token;
 describe('Sucess Case', () => {    
     
     beforeEach(sinon.restore);

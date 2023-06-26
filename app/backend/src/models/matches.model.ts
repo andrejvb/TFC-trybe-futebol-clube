@@ -34,6 +34,16 @@ class MatchesModel implements IMatchModel {
     await this.model.update({ inProgress: false }, { where: { id } });
     return { message: 'Finished' };
   };
+
+  updateMatch = async (
+    id: number,
+    homeTeamGoals: IMatches['homeTeamGoals'],
+    awayTeamGoals: IMatches['awayTeamGoals'],
+  ):
+  Promise<ServiceMessage> => {
+    await this.model.update({ homeTeamGoals, awayTeamGoals }, { where: { id } });
+    return { message: 'Update finished' };
+  };
 }
 
 export default MatchesModel;

@@ -1,4 +1,4 @@
-import Iteams from '../../Interfaces/Iteams';
+import Iteams from '../../Interfaces/ITeams';
 
 const teams: Iteams[] = [
   {id: 1, teamName: 'Corinthians'}, 

@@ -10,4 +10,6 @@ router.get('/', matchController.findAllMatches);
 
 router.patch('/:id/finish', middlewares.tokenValidation, matchController.finishMath);
 
+router.patch('/:id', middlewares.tokenValidation, matchController.updateMath);
+
 export default router;
