@@ -1,4 +1,3 @@
-import { ServiceResponse } from './../database/types/ServiceResponse';
 import { ServiceMessage } from '../database/types/ServiceResponse';
 import IMatches, { matchValues } from './IMatches';
 
