@@ -1,4 +1,4 @@
-import IMatches from '../Interfaces/IMatches';
+import IMatches, { matchValues } from '../Interfaces/IMatches';
 import SequelizeMatch from '../database/models/SequelizeMatch';
 import IMatchModel from '../Interfaces/IMatchesModel';
 import SequelizeTeam from '../database/models/SequelizeTeam';
@@ -43,6 +43,11 @@ class MatchesModel implements IMatchModel {
   Promise<ServiceMessage> => {
     await this.model.update({ homeTeamGoals, awayTeamGoals }, { where: { id } });
     return { message: 'Update finished' };
+  };
+
+  createMatch = async (params: matchValues): Promise<IMatches> => {
+    const newMatch = await this.model.create({ ...params, inProgress: true });
+    return newMatch.dataValues;
   };
 }
 

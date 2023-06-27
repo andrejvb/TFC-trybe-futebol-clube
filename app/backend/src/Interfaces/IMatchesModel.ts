@@ -1,5 +1,5 @@
 import { ServiceMessage } from '../database/types/ServiceResponse';
-import IMatches from './IMatches';
+import IMatches, { matchValues } from './IMatches';
 
 export default interface IMatchModel {
   findAll(): Promise<[] | IMatches[]>;
@@ -11,4 +11,5 @@ export default interface IMatchModel {
     awayTeamGoals: IMatches['awayTeamGoals'],
   ):
   Promise<ServiceMessage>
+  createMatch (params: matchValues): Promise<IMatches>
 }

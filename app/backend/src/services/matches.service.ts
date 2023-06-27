@@ -1,4 +1,4 @@
-import IMatches from '../Interfaces/IMatches';
+import IMatches, { matchValues } from '../Interfaces/IMatches';
 import { ServiceMessage, ServiceResponse } from '../database/types/ServiceResponse';
 import IMatchModel from '../Interfaces/IMatchesModel';
 import MatchesModel from '../models/matches.model';
@@ -30,6 +30,11 @@ class MatchesService {
   :Promise<ServiceResponse<ServiceMessage>> => {
     const result = await this.matchModel.updateMatch(id, homeTeamGoals, awayTeamGoals);
     return { status: 'SUCCESSFUL', data: result };
+  };
+
+  createMatch = async (params: matchValues): Promise<ServiceResponse<IMatches>> => {
+    const newMatch = await this.matchModel.createMatch(params);
+    return { status: 'SUCCESSFUL', data: newMatch };
   };
 }
 

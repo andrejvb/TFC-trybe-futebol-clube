@@ -12,4 +12,6 @@ router.patch('/:id/finish', middlewares.tokenValidation, matchController.finishM
 
 router.patch('/:id', middlewares.tokenValidation, matchController.updateMath);
 
+router.post('/', middlewares.tokenValidation, matchController.createMatch);
+
 export default router;
