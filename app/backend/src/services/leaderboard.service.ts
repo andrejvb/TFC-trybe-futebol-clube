@@ -58,8 +58,6 @@ class LeaderBoardService {
       || b.totalVictories - a.totalVictories
       || b.goalsBalance - a.goalsBalance
       || b.goalsFavor - a.goalsFavor);
-    console.log(leaderBoardReturn);
-
     return leaderBoardReturn;
   };
 }

@@ -61,4 +61,29 @@ describe('Sucess Case', () => {
     expect(status).to.be.equal(200);
     expect(body).to.have.deep.property('message', 'Update finished');
   });
+
+  it('Create match whith sucess', async () => {
+    // Arrange
+    const bodyUpdate = {
+        "homeTeamId": 16, // O valor deve ser o id do time
+        "awayTeamId": 8, // O valor deve ser o id do time
+        "homeTeamGoals": 2,
+        "awayTeamGoals": 2,
+      }
+    // Act
+    const { status, body } = await chai.
+    request(app)
+    .post('/matches')
+    .set('Authorization', usersMock.token)
+    .send(bodyUpdate)
+        
+    // Assert
+    expect(status).to.be.equal(201);
+    expect(body).to.have.own.property('id');
+    expect(body).to.have.own.property('homeTeamId');
+    expect(body).to.have.own.property('homeTeamGoals');
+    expect(body).to.have.own.property('awayTeamId');
+    expect(body).to.have.own.property('awayTeamGoals');
+    expect(body).to.have.deep.property('inProgress', true);
+  });
 });
