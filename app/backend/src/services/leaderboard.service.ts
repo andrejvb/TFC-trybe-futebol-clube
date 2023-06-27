@@ -27,6 +27,12 @@ class LeaderBoardService {
     return matches.map((match) => match.dataValues) as unknown as ILeaderboardResponse[];
   };
 
+  static efficiency(totalGames: number, totalVictories: number, totalDraws: number): number {
+    return Number((((
+      Number(totalVictories) * 3 + Number(totalDraws)) / (
+      Number(totalGames) * 3)) * 100).toFixed(2));
+  }
+
   public leaderBoard = async () => {
     const leaderBoard = await this.boardQuery();
     const response = leaderBoard
@@ -46,15 +52,9 @@ class LeaderBoardService {
     return response;
   };
 
-  static efficiency(totalGames: number, totalVictories: number, totalDraws: number): number {
-    return Number((((
-      Number(totalVictories) * 3 + Number(totalDraws)) / (
-      Number(totalGames) * 3)) * 100).toFixed(2));
-  }
-
   public finalBalance = async () => {
-    const leaderBoard = await this.leaderBoard();
-    return leaderBoard.sort((a, b) => {
+    const leaderBoardReturn = await this.leaderBoard();
+    return leaderBoardReturn.sort((a, b) => {
       if (a.totalPoints !== b.totalPoints) return b.totalPoints - a.totalPoints;
 
       if (a.totalVictories !== b.totalVictories) return b.totalVictories - a.totalVictories;
