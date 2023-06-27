@@ -43,7 +43,7 @@ class LeaderBoardService {
         totalVictories: Number(match.totalVictories),
         totalDraws: Number(match.totalDraws),
         totalLosses: Number(match.totalLosses),
-        goalsFavor: Number(match.goalsFavor - match.goalsOwn),
+        goalsFavor: Number(match.goalsFavor),
         goalsOwn: Number(match.goalsOwn),
         goalsBalance: Number(match.goalsFavor - match.goalsOwn),
         efficiency: LeaderBoardService
@@ -54,15 +54,13 @@ class LeaderBoardService {
 
   public finalBalance = async () => {
     const leaderBoardReturn = await this.leaderBoard();
-    return leaderBoardReturn.sort((a, b) => {
-      if (a.totalPoints !== b.totalPoints) return b.totalPoints - a.totalPoints;
+    leaderBoardReturn.sort((a, b) => b.totalPoints - a.totalPoints
+      || b.totalVictories - a.totalVictories
+      || b.goalsBalance - a.goalsBalance
+      || b.goalsFavor - a.goalsFavor);
+    console.log(leaderBoardReturn);
 
-      if (a.totalVictories !== b.totalVictories) return b.totalVictories - a.totalVictories;
-
-      if (a.goalsBalance !== b.goalsBalance) return b.goalsBalance - a.goalsBalance;
-
-      return b.goalsFavor - a.goalsFavor;
-    });
+    return leaderBoardReturn;
   };
 }
 
