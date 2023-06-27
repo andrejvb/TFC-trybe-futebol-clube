@@ -27,7 +27,7 @@ class LeaderBoardService {
     return matches.map((match) => match.dataValues) as unknown as ILeaderboardResponse[];
   };
 
-  public LeaderBoard = async () => {
+  public leaderBoard = async () => {
     const leaderBoard = await this.boardQuery();
     const response = leaderBoard
       .map((match) => ({
@@ -39,8 +39,30 @@ class LeaderBoardService {
         totalLosses: Number(match.totalLosses),
         goalsFavor: Number(match.goalsFavor - match.goalsOwn),
         goalsOwn: Number(match.goalsOwn),
+        goalsBalance: Number(match.goalsFavor - match.goalsOwn),
+        efficiency: LeaderBoardService
+          .efficiency(match.totalGames, match.totalVictories, match.totalDraws),
       }));
     return response;
+  };
+
+  static efficiency(totalGames: number, totalVictories: number, totalDraws: number): number {
+    return Number((((
+      Number(totalVictories) * 3 + Number(totalDraws)) / (
+      Number(totalGames) * 3)) * 100).toFixed(2));
+  }
+
+  public finalBalance = async () => {
+    const leaderBoard = await this.leaderBoard();
+    return leaderBoard.sort((a, b) => {
+      if (a.totalPoints !== b.totalPoints) return b.totalPoints - a.totalPoints;
+
+      if (a.totalVictories !== b.totalVictories) return b.totalVictories - a.totalVictories;
+
+      if (a.goalsBalance !== b.goalsBalance) return b.goalsBalance - a.goalsBalance;
+
+      return b.goalsFavor - a.goalsFavor;
+    });
   };
 }
 
