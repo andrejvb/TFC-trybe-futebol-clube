@@ -32,7 +32,14 @@ class MatchesService {
     return { status: 'SUCCESSFUL', data: result };
   };
 
-  createMatch = async (params: matchValues): Promise<ServiceResponse<IMatches>> => {
+  createMatch = async (
+    params: matchValues,
+  ): Promise<ServiceResponse<IMatches | ServiceMessage>> => {
+    const homeTeamExist = await this.matchModel.isExistsTeam(params.homeTeamId);
+    const awayTeamExist = await this.matchModel.isExistsTeam(params.awayTeamId);
+    if (!homeTeamExist || !awayTeamExist) {
+      return { status: 'NOT_FOUND', data: { message: 'There is no team with such id!' } };
+    }
     const newMatch = await this.matchModel.createMatch(params);
     return { status: 'SUCCESSFUL', data: newMatch };
   };

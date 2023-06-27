@@ -1,3 +1,4 @@
+import { ServiceResponse } from './../database/types/ServiceResponse';
 import { ServiceMessage } from '../database/types/ServiceResponse';
 import IMatches, { matchValues } from './IMatches';
 
@@ -12,4 +13,5 @@ export default interface IMatchModel {
   ):
   Promise<ServiceMessage>
   createMatch (params: matchValues): Promise<IMatches>
+  isExistsTeam (id: number): Promise<boolean>
 }

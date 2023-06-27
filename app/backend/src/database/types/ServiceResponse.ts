@@ -1,4 +1,4 @@
-type ErrorType = 'INVALID_DATA' | 'UNAUTHORIZED' | 'NOT_FOUND' | 'BAD_REQUEST';
+type ErrorType = 'INVALID_DATA' | 'UNAUTHORIZED' | 'NOT_FOUND' | 'BAD_REQUEST' | 'CONFLICT';
 
 export type ServiceResponseError = {
   status: ErrorType,

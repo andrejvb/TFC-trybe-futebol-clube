@@ -1,11 +1,12 @@
+import { ServiceMessage } from '../database/types/ServiceResponse';
 import IMatches, { matchValues } from '../Interfaces/IMatches';
 import SequelizeMatch from '../database/models/SequelizeMatch';
 import IMatchModel from '../Interfaces/IMatchesModel';
 import SequelizeTeam from '../database/models/SequelizeTeam';
-import { ServiceMessage } from '../database/types/ServiceResponse';
 
 class MatchesModel implements IMatchModel {
   model = SequelizeMatch;
+  modelTeam = SequelizeMatch;
 
   findAll = async (): Promise<[] | IMatches[]> => {
     const allMatches = await this.model.findAll({
@@ -45,7 +46,27 @@ class MatchesModel implements IMatchModel {
     return { message: 'Update finished' };
   };
 
-  createMatch = async (params: matchValues): Promise<IMatches> => {
+  isExistsTeam = async (id: number): Promise<boolean> => {
+    const isTeamExists = await this.modelTeam.findByPk(id);
+    return !!isTeamExists;
+  };
+
+  createMatch = async (
+    params: matchValues,
+  ): Promise<IMatches> => {
+    // const isMatchInProgress = await this.model.findOne({
+    //   where: {
+    //     homeTeamId: params.homeTeamId,
+    //     awayTeamId: params.awayTeamId,
+    //     inProgress: true,
+    //   },
+    // });
+    // if (isMatchInProgress) {
+    //   return {
+    //     status: 'CONFLICT',
+    //     data: { message: 'It is not possible to create a match with two equal teams' },
+    //   };
+    // }
     const newMatch = await this.model.create({ ...params, inProgress: true });
     return newMatch.dataValues;
   };
