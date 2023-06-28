@@ -6,7 +6,12 @@ export default class LeaderBoardController {
   }
 
   public getLeaderBoardHome = async (req: Request, res: Response) => {
-    const data = await this.leaderBoardService.finalBalance();
+    const data = await this.leaderBoardService.finalBalanceHome();
+    return res.status(200).json(data);
+  };
+
+  public getLeaderBoardAway = async (req: Request, res: Response) => {
+    const data = await this.leaderBoardService.finalBalanceAway();
     return res.status(200).json(data);
   };
 }

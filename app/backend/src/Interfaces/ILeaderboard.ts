@@ -11,7 +11,7 @@ export interface ILeaderboard {
   efficiency: number,
 }
 
-export type ILeaderboardResponse = {
+export type ILeaderboardHomeResponse = {
   totalPoints: number,
   totalGames: number,
   totalVictories: number,
@@ -23,3 +23,18 @@ export type ILeaderboardResponse = {
     teamName: string
   }
 };
+
+export type ILeaderboardAwayResponse = {
+  totalPoints: number,
+  totalGames: number,
+  totalVictories: number,
+  totalLosses: number,
+  totalDraws: number,
+  goalsFavor: number,
+  goalsOwn: number,
+  awayTeam: {
+    teamName: string
+  }
+};
+
+export type ILeaderResponse = ILeaderboardHomeResponse | ILeaderboardAwayResponse;

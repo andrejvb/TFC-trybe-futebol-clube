@@ -12,6 +12,6 @@ router.use('/login', usersRoutes);
 
 router.use('/matches', matchesRoutes);
 
-router.use('/leaderboard/home', leaderBoard);
+router.use('/leaderboard', leaderBoard);
 
 export default router;
